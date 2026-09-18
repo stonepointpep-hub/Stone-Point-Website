@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="Stone Point — research compounds, lot documentation, and analytical testing information." />
+  <title>Stone Point</title>
+  <style>
+    :root{
+      --bg:#070707;
+      --panel:#111111;
+      --panel-2:#171717;
+      --text:#f5f5f2;
+      --muted:#b7b7b0;
+      --gold:#c9a34a;
+      --gold-2:#e1c06c;
+      --line:#2a2a28;
+      --max:1160px;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% -10%, rgba(201,163,74,.14), transparent 28rem),
+        radial-gradient(circle at 90% 8%, rgba(201,163,74,.08), transparent 24rem),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:auto;padding:0 22px}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(7,7,7,.82);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:.02em}
+    .mark{width:38px;height:46px;display:grid;place-items:center;flex:0 0 auto}
+    .mark svg{width:100%;height:100%;display:block}
+    .brand span{font-size:1.06rem}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .nav-links a{font-size:.94rem;text-decoration:none;color:#d8d8d3}
+    .nav-links a:hover{color:var(--gold-2)}
+    .menu-btn{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:12px;padding:9px 12px}
+    .hero{padding:92px 0 54px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid rgba(201,163,74,.35);border-radius:999px;color:var(--gold-2);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+    .hero h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.94;margin:24px 0 20px;letter-spacing:-.055em;max-width:950px}
+    .hero h1 em{font-style:normal;color:var(--gold-2)}
+    .hero p{max-width:760px;color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.25rem);margin:0 0 30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:14px;padding:13px 18px;font-weight:750;border:1px solid transparent}
+    .btn-primary{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#0c0c0c}
+    .btn-secondary{border-color:var(--line);background:#111;color:#fff}
+    .btn-secondary:hover{border-color:#4a4a46}
+    .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:54px}
+    .trust{background:linear-gradient(180deg,#121212,#0d0d0d);border:1px solid var(--line);border-radius:18px;padding:20px}
+    .trust strong{display:block;margin-bottom:6px}
+    .trust span{color:var(--muted);font-size:.94rem}
+    section{padding:70px 0}
+    .section-kicker{color:var(--gold-2);font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.045em;line-height:1.05;margin:0 0 16px}
+    .section-intro{color:var(--muted);max-width:760px;margin:0 0 30px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),#0c0c0c);border-radius:var(--radius);padding:24px;min-height:210px;position:relative;overflow:hidden}
+    .card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(201,163,74,.12);border-radius:50%;right:-48px;top:-48px}
+    .card h3{font-size:1.25rem;margin:0 0 8px}
+    .card p{color:var(--muted);margin:0}
+    .pill{display:inline-block;margin-top:20px;padding:6px 10px;border-radius:999px;background:#1a1a18;border:1px solid #333;color:#ddd;font-size:.78rem}
+    .coa{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
+    .coa-panel{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:28px}
+    .coa-panel ul{margin:18px 0 0;padding-left:20px;color:var(--muted)}
+    .coa-panel li{margin:7px 0}
+    .coa-demo{display:grid;gap:10px;margin-top:18px}
+    .coa-row{display:grid;grid-template-columns:1.2fr .9fr .7fr;gap:10px;align-items:center;border:1px solid #2a2a28;background:#0b0b0b;border-radius:14px;padding:13px 14px;font-size:.91rem}
+    .coa-row small{color:var(--muted)}
+    .status{color:#d7bd77;font-weight:700;text-align:right}
+    .faq{display:grid;gap:10px}
+    details{border:1px solid var(--line);border-radius:16px;background:#0e0e0e;padding:0 18px}
+    summary{cursor:pointer;font-weight:700;padding:18px 0}
+    details p{color:var(--muted);margin:0 0 18px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact-box{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:linear-gradient(160deg,#151515,#0b0b0b)}
+    .contact-box code{display:block;margin-top:12px;padding:12px;border-radius:12px;background:#080808;border:1px solid #252525;color:#d7bd77;overflow:auto}
+    .note{font-size:.88rem;color:#9e9e98}
+    footer{border-top:1px solid var(--line);padding:34px 0 46px;color:#8f8f89;font-size:.84rem}
+    .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .disclaimer{margin-top:18px;max-width:900px}
+    @media (max-width:820px){
+      .nav-links{display:none;position:absolute;left:14px;right:14px;top:70px;flex-direction:column;align-items:stretch;background:#0d0d0d;border:1px solid var(--line);border-radius:16px;padding:10px}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:11px 10px}
+      .menu-btn{display:block}
+      .hero{padding-top:70px}
+      .trust-row,.grid,.coa,.contact{grid-template-columns:1fr}
+      .coa-row{grid-template-columns:1fr 1fr}
+      .coa-row .status{grid-column:1/-1;text-align:left}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand" aria-label="Stone Point home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 4 86 31 72 45 82 62 64 69 59 92 50 116 41 92 36 69 18 62 28 45 14 31 50 4Z" stroke="#D8B762" stroke-width="6" stroke-linejoin="round"/>
+            <path d="m28 45 22 18 22-18M36 69l14-6 14 6M41 92l9-29 9 29" stroke="#8F7435" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>STONE POINT</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#products">Products</a>
+        <a href="#testing">Testing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Research compounds · documentation · transparency</div>
+        <h1>Built around <em>traceability.</em></h1>
+        <p>Stone Point provides research compounds with straightforward lot documentation and a growing library of analytical testing records. This site is designed to make product and testing information easy to find.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#products">View Products</a>
+          <a class="btn btn-secondary" href="#testing">View COA Information</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust"><strong>Lot-based documentation</strong><span>Keep product records organized by lot instead of scattered screenshots and messages.</span></div>
+          <div class="trust"><strong>Testing library</strong><span>Post available analytical records in one place for easier reference.</span></div>
+          <div class="trust"><strong>Simple support</strong><span>Give customers one consistent place for product, testing, and contact information.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="wrap">
+        <div class="section-kicker">Catalog</div>
+        <h2>Research products</h2>
+        <p class="section-intro">Initial catalog placeholders are shown below. We can change names, strengths, descriptions, and availability before launch.</p>
+        <div class="grid">
+          <article class="card"><h3>Retatrutide 30 mg</h3><p>Research-use product listing with room for lot number, availability, and linked testing documentation.</p><span class="pill">Research use only</span></article>
+          <article class="card"><h3>Retatrutide 60 mg</h3><p>Higher-strength research listing using the same standardized lot and COA structure.</p><span class="pill">Research use only</span></article>
+          <article class="card"><h3>KLOW 80 mg</h3><p>Product page placeholder ready for your final composition, packaging details, and testing records.</p><span class="pill">Research use only</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testing">
+      <div class="wrap">
+        <div class="section-kicker">Documentation</div>
+        <h2>COA & testing library</h2>
+        <p class="section-intro">The production version can organize testing records by product and lot, with links to the original PDF or image file.</p>
+        <div class="coa">
+          <div class="coa-panel">
+            <h3>What can be listed</h3>
+            <ul>
+              <li>Product name and strength</li>
+              <li>Lot or batch identifier</li>
+              <li>Testing date</li>
+              <li>Mass/content and purity results</li>
+              <li>Endotoxin and heavy-metals reports, when available</li>
+              <li>Downloadable PDF or image record</li>
+            </ul>
+          </div>
+          <div class="coa-panel">
+            <h3>Example layout</h3>
+            <div class="coa-demo">
+              <div class="coa-row"><strong>Retatrutide 30 mg</strong><small>Lot: SAMPLE-001</small><span class="status">COA placeholder</span></div>
+              <div class="coa-row"><strong>Retatrutide 60 mg</strong><small>Lot: SAMPLE-002</small><span class="status">COA placeholder</span></div>
+              <div class="coa-row"><strong>KLOW 80 mg</strong><small>Lot: SAMPLE-003</small><span class="status">COA placeholder</span></div>
+            </div>
+            <p class="note">These are sample entries only. No testing result is being claimed here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-kicker">Information</div>
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details><summary>Where are testing records posted?</summary><p>Testing records will be organized by product and lot in the COA section. The site can link directly to PDF or image files stored with the website.</p></details>
+          <details><summary>Can I request documentation for a specific lot?</summary><p>Yes. The final contact section can route documentation questions to your business email.</p></details>
+          <details><summary>Are these products intended for human use?</summary><p>No. Products presented on this site are labeled for laboratory research use only and are not intended for human consumption or medical use.</p></details>
+          <details><summary>Can this site be updated automatically?</summary><p>Yes. Once GitHub and Vercel are connected, changes pushed to the GitHub repository can automatically redeploy the live website.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-kicker">Contact</div>
+        <h2>Business contact</h2>
+        <div class="contact">
+          <div class="contact-box">
+            <h3>Email</h3>
+            <p class="section-intro">Your business email will go here before launch.</p>
+            <code>YOUR_BUSINESS_EMAIL</code>
+          </div>
+          <div class="contact-box">
+            <h3>Site status</h3>
+            <p class="section-intro">This is the starter version. Next we can add your actual email, domain, logo artwork, COAs, additional products, and policy pages.</p>
+            <a class="btn btn-secondary" href="#top">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid"><strong>STONE POINT</strong><span>© <span id="year"></span> Stone Point</span></div>
+      <p class="disclaimer">For laboratory research use only. Not for human consumption. Nothing on this website is medical advice, and no statement on this site is intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+</body>
+</html>
