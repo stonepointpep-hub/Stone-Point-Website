@@ -188,25 +188,25 @@
       <div class="wrap">
         <div class="section-kicker">Documentation</div>
         <h2>COA & testing library</h2>
-        <p class="section-intro">Approved, redacted testing records are organized by product and lot. Supplier-identifying information is removed before any document is published.</p>
+        <p class="section-intro">Customer-safe testing summaries are organized by product and batch. Full reports are available from Stone Point by request.</p>
         <div class="coa">
           <div class="coa-panel">
-            <h3>What can be listed</h3>
+            <h3>What is listed</h3>
             <ul>
               <li>Product name and strength</li>
-              <li>Lot or batch identifier</li>
-              <li>Testing date</li>
-              <li>Mass/content and purity results</li>
-              <li>Endotoxin and heavy-metals reports, when available</li>
-              <li>Downloadable PDF or image record</li>
+              <li>Current lot or batch identifier</li>
+              <li>Available test categories</li>
+              <li>Purity/content documentation, when listed</li>
+              <li>Endotoxin and heavy-metals documentation, when listed</li>
+              <li>Complete reports available by request</li>
             </ul>
           </div>
           <div class="coa-panel">
             <h3>Publication status</h3>
             <div class="coa-demo">
-              <div class="coa-row"><strong>COA library</strong><small>Redaction required</small><span class="status">Files pending</span></div>
+              <div class="coa-row"><strong>Testing summaries</strong><small>Supplier-safe index</small><span class="status" id="recordStatus">Loading</span></div>
             </div>
-            <p class="note">Testing links are added to the matching product card only after the underlying report has been reviewed and redacted.</p>
+            <p class="note">Direct supplier-facing links are not published. The testing index is checked automatically and updated when listed batches change.</p>
           </div>
         </div>
       </div>
@@ -217,10 +217,10 @@
         <div class="section-kicker">Information</div>
         <h2>Frequently asked questions</h2>
         <div class="faq">
-          <details><summary>Where are testing records posted?</summary><p>Approved records appear as links on the matching product card and are stored with this website so customers do not have to visit a supplier-facing report page.</p></details>
-          <details><summary>Can I request documentation for a specific lot?</summary><p>Yes. The final contact section can route documentation questions to your business email.</p></details>
+          <details><summary>Where are testing records posted?</summary><p>Each documented product has a testing-summary link on its product card. The summary lists the batch and available test categories without sending customers to a supplier-facing page.</p></details>
+          <details><summary>Can I request documentation for a specific lot?</summary><p>Yes. Contact Stone Point through the same channel used for your order and identify the product and batch shown in the testing summary.</p></details>
           <details><summary>Are these products intended for human use?</summary><p>No. Products presented on this site are labeled for laboratory research use only and are not intended for human consumption or medical use.</p></details>
-          <details><summary>How are reports prepared for publication?</summary><p>Each report is reviewed, matched to the correct product and lot, and redacted to remove supplier-identifying information before it is linked here.</p></details>
+          <details><summary>What does a testing summary mean?</summary><p>It identifies the test documentation listed for that batch. It does not reproduce numerical results or claim that Stone Point performed the analysis. Complete reports are available by request.</p></details>
         </div>
       </div>
     </section>
@@ -231,13 +231,13 @@
         <h2>Business contact</h2>
         <div class="contact">
           <div class="contact-box">
-            <h3>Email</h3>
-            <p class="section-intro">Your business email will go here before launch.</p>
-            <code>YOUR_BUSINESS_EMAIL</code>
+            <h3>Documentation requests</h3>
+            <p class="section-intro">Email Stone Point with the product name and batch number shown in the testing summary.</p>
+            <a class="btn btn-primary" href="mailto:Stonepointpep@gmail.com?subject=Full%20testing%20report%20request">Stonepointpep@gmail.com</a>
           </div>
           <div class="contact-box">
-            <h3>Site status</h3>
-            <p class="section-intro">This is the starter version. Next we can add your actual email, domain, logo artwork, COAs, additional products, and policy pages.</p>
+            <h3>Testing index</h3>
+            <p class="section-intro">Customer-safe batch summaries are checked automatically. Complete third-party reports remain available by request.</p>
             <a class="btn btn-secondary" href="#top">Back to top</a>
           </div>
         </div>
@@ -264,6 +264,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const coa = window.STONE_POINT_COAS || {};
+      const recordStatus = document.getElementById('recordStatus');
+      if (recordStatus) recordStatus.textContent = `${Object.keys(coa).length} products listed`;
       document.querySelectorAll('#products .card').forEach(card => {
         const title = card.querySelector('h3')?.textContent.trim();
         const tests = coa[title];
