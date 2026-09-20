@@ -1,4 +1,4 @@
-TV y<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -72,6 +72,8 @@ TV y<!doctype html>
     .card h3{font-size:1.25rem;margin:0 0 8px}
     .card p{color:var(--muted);margin:0}
     .pill{display:inline-block;margin-top:20px;padding:6px 10px;border-radius:999px;background:#1a1a18;border:1px solid #333;color:#ddd;font-size:.78rem}
+    .coa-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .coa-link{margin-top:0;text-decoration:none;border-color:rgba(201,163,74,.45);color:var(--gold-2)}
     .coa{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
     .coa-panel{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius);padding:28px}
     .coa-panel ul{margin:18px 0 0;padding-left:20px;color:var(--muted)}
@@ -147,7 +149,7 @@ TV y<!doctype html>
       <div class="wrap">
         <div class="section-kicker">Catalog</div>
         <h2>Research products</h2>
-        <p class="section-intro">Initial catalog placeholders are shown below. We can change names, strengths, descriptions, and availability before launch.</p>
+        <p class="section-intro">Browse the current Stone Point research catalog. Lot-specific testing records will appear on each product as redacted files are approved for publication.</p>
         <div class="grid">
        <article class="card"><h3>5-Amino-1MQ 50 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>BAC Water 10 mL</h3><span class="pill">Research use only</span></article>
@@ -177,15 +179,16 @@ TV y<!doctype html>
 <article class="card"><h3>MOTS-C 40 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Tesamorelin / Ipamorelin 10/3 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>GLOW 70 mg</h3><span class="pill">Research use only</span></article>
- </div>
-</div>     
+        </div>
+      </div>
+    </section>
       
 
     <section id="testing">
       <div class="wrap">
         <div class="section-kicker">Documentation</div>
         <h2>COA & testing library</h2>
-        <p class="section-intro">The production version can organize testing records by product and lot, with links to the original PDF or image file.</p>
+        <p class="section-intro">Approved, redacted testing records are organized by product and lot. Supplier-identifying information is removed before any document is published.</p>
         <div class="coa">
           <div class="coa-panel">
             <h3>What can be listed</h3>
@@ -199,13 +202,11 @@ TV y<!doctype html>
             </ul>
           </div>
           <div class="coa-panel">
-            <h3>Example layout</h3>
+            <h3>Publication status</h3>
             <div class="coa-demo">
-              <div class="coa-row"><strong>Retatrutide 30 mg</strong><small>Lot: SAMPLE-001</small><span class="status">COA placeholder</span></div>
-              <div class="coa-row"><strong>Retatrutide 60 mg</strong><small>Lot: SAMPLE-002</small><span class="status">COA placeholder</span></div>
-              <div class="coa-row"><strong>KLOW 80 mg</strong><small>Lot: SAMPLE-003</small><span class="status">COA placeholder</span></div>
+              <div class="coa-row"><strong>COA library</strong><small>Redaction required</small><span class="status">Files pending</span></div>
             </div>
-            <p class="note">These are sample entries only. No testing result is being claimed here.</p>
+            <p class="note">Testing links are added to the matching product card only after the underlying report has been reviewed and redacted.</p>
           </div>
         </div>
       </div>
@@ -216,10 +217,10 @@ TV y<!doctype html>
         <div class="section-kicker">Information</div>
         <h2>Frequently asked questions</h2>
         <div class="faq">
-          <details><summary>Where are testing records posted?</summary><p>Testing records will be organized by product and lot in the COA section. The site can link directly to PDF or image files stored with the website.</p></details>
+          <details><summary>Where are testing records posted?</summary><p>Approved records appear as links on the matching product card and are stored with this website so customers do not have to visit a supplier-facing report page.</p></details>
           <details><summary>Can I request documentation for a specific lot?</summary><p>Yes. The final contact section can route documentation questions to your business email.</p></details>
           <details><summary>Are these products intended for human use?</summary><p>No. Products presented on this site are labeled for laboratory research use only and are not intended for human consumption or medical use.</p></details>
-          <details><summary>Can this site be updated automatically?</summary><p>Yes. Once GitHub and Vercel are connected, changes pushed to the GitHub repository can automatically redeploy the live website.</p></details>
+          <details><summary>How are reports prepared for publication?</summary><p>Each report is reviewed, matched to the correct product and lot, and redacted to remove supplier-identifying information before it is linked here.</p></details>
         </div>
       </div>
     </section>
@@ -258,57 +259,30 @@ TV y<!doctype html>
     menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
   </script>
- <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const coa = {
-"5-Amino-1MQ 50 mg":[["Purity","https://verify.janoshik.com/tests/216189-51q_50mg_51Q500725_HRVIXUQWLB8B"],["Heavy Metals","https://verify.janoshik.com/tests/216190-51q_50mg_51Q500725_LN1DAZBIA3EN"],["Endotoxin","https://verify.janoshik.com/tests/216191-51q_50mg_51Q500725_TZZDWV416CB5"]],
-"BAC Water 10 mL":[["Benzyl","https://verify.janoshik.com/tests/210590-uther_bac_1XZ9NK3ZQY8H"],["Heavy Metals","https://verify.janoshik.com/tests/210594-uther_bac_8KFNK9DTCUQM"],["Endotoxin","https://verify.janoshik.com/tests/210593-uther_bac_XK49DIGGKZ9W"]],
-"Epitalon 50 mg":[["Purity","https://verify.janoshik.com/tests/94413-Epi_50mg_EPI501210_UY6M31CKZD3K"]],
-"Melanotan 2 10 mg":[["Purity","https://verify.janoshik.com/tests/216176-mt2_10mg_3957_MT2100724_LPEBUCN14YHL"],["Heavy Metals","https://verify.janoshik.com/tests/216177-mt2_10mg_3957_MT2100724_D19392KW9UY8"],["Endotoxin","https://verify.janoshik.com/tests/216175-mt2_10mg_3957_MT2100724_D579P2ILWSKM"]],
-"IllumiNeuro":[["Purity","https://verify.janoshik.com/tests/216183-illumineeuro_10067_ILLUM0724_HXM1EPJRZ7I8"],["Heavy Metals","https://verify.janoshik.com/tests/216184-illumineeuro_10067_ILLUM0724_B6TIK4U8Q8WS"],["Endotoxin","https://verify.janoshik.com/tests/216182-illumineeuro_10067_ILLUM0724_S2BQHQJ6KYK4"]],
-"PT-141 10 mg":[["Purity","https://verify.janoshik.com/tests/216200-pt141_10mg_PT100726_8GMPXPVSY2D3"],["Heavy Metals","https://verify.janoshik.com/tests/216201-pt141_10mg_PT100726_RIDE6826F7WS"],["Endotoxin","https://verify.janoshik.com/tests/216199-pt141_10mg_PT100726_Q4AJ9AEB5JXI"]],
-"TB4 10 mg":[["Purity","https://verify.janoshik.com/tests/213012-tb_10mg_TB4100719_4TQYMN6UCVG3"],["Heavy Metals","https://verify.janoshik.com/tests/213013-tb_10mg_TB4100719_ME8DXDC14KG9"],["Endotoxin","https://verify.janoshik.com/tests/213014-tb_10mg_TB4100719_ZTCZW4TG7X5M"]],
-"BPC-157 10 mg":[["Purity","https://verify.janoshik.com/tests/213018-bpc_10mg_BP100719_TE5WQJ8L28H9"],["Heavy Metals","https://verify.janoshik.com/tests/213019-bpc_10mg_BP100719_67HAPVVAP6PW"],["Endotoxin","https://verify.janoshik.com/tests/213020-bpc_10mg_BP100719_YSHV682U69ZE"]],
-"NAD+ 500":[["Purity","https://verify.janoshik.com/tests/209652-NAD500_NA5000710_3PQTLDN9NTMT"],["Heavy Metals","https://verify.janoshik.com/tests/209653-NAD500_NA5000710_SWTP3GC1MSNK"],["Endotoxin","https://verify.janoshik.com/tests/209654-NAD500_NA5000710_7BDHNE8T2CFS"]],
-"KLOW":[["Purity","https://verify.janoshik.com/tests/206280-us_klow_3936_KLO800703_4GABPLXCJ7JH"],["Heavy Metals","https://verify.janoshik.com/tests/216247-us_klow_3936_KLO800703_T2ZTDKT12Y7Z"],["Endotoxin","https://verify.janoshik.com/tests/216248-us_klow_3936_KLO800703_9F3E758WPMCH"]],
-"NAD+ 1000":[["Purity","https://verify.janoshik.com/tests/206291-NAD1000_NA10000704_H2RTMUAZZRJ6"],["Heavy Metals","https://verify.janoshik.com/tests/219752-NAD1000_NA10000704_AWVZCIL33CZN"],["Endotoxin","https://verify.janoshik.com/tests/219750-NAD1000_NA10000704_3P93I4HL6745"]],
-"Cartalax 40 mg":[["Purity","https://verify.janoshik.com/tests/219701-cartalax_40mg_CARTA400730_AK5GBJPRL29L"],["Heavy Metals","https://verify.janoshik.com/tests/219703-cartalax_40mg_CARTA400730_2R2MEFIE99XJ"],["Endotoxin","https://verify.janoshik.com/tests/219702-cartalax_40mg_CARTA400730_7GJLBSMLNMZL"]],
-"Cartalax / TB4 / BPC-157 10/5/5":[["Purity","https://verify.janoshik.com/tests/207692-cartalaxtbbp_1055_CARTB10550705_7K1S68VM5KN7"],["Heavy Metals","https://verify.janoshik.com/tests/207693-cartalaxtbbp_1055_CARTB10550705_ESKGQ9RESXRN"],["Endotoxin","https://verify.janoshik.com/tests/207694-cartalaxtbbp_1055_CARTB10550705_BLRML2DDZB64"]],
-"GHK / KPV 50/20":[["Purity","https://verify.janoshik.com/tests/207701-us_ghk_50mgkpv_20mg_HKKP50200705_2DK2AFUQG53N"],["Heavy Metals","https://verify.janoshik.com/tests/207703-us_ghk_50mgkpv_20mg_HKKP50200705_3AE5Y4C61YPW"],["Endotoxin","https://verify.janoshik.com/tests/207702-us_ghk_50mgkpv_20mg_HKKP50200705_EUCYJCF7WERV"]],
-"Thymosin Alpha-1 10 mg":[["Purity","https://verify.janoshik.com/tests/205554-ta1_3995_TA1100701_7D4IJR1VLD8R"],["Heavy Metals","https://verify.janoshik.com/tests/205556-ta1_3995_TA1100701_Q99SYHP87RDB"],["Endotoxin","https://verify.janoshik.com/tests/205555-ta1_3995_TA1100701_P8GSPPBBR8WA"]],
-"KPV 30 mg":[["Purity","https://verify.janoshik.com/tests/213021-kpv_30mg_KP300716_ILTLLGFXK4W7"],["Heavy Metals","https://verify.janoshik.com/tests/213022-kpv_30mg_KP300716_3U755WPKXU9S"],["Endotoxin","https://verify.janoshik.com/tests/213023-kpv_30mg_KP300716_7FRDQNQGYZSD"]],
-"Tesamorelin 10 mg":[["Purity","https://verify.janoshik.com/tests/214049-tesa_10mg_TE100722_GFM9MBBUN5ZR"],["Heavy Metals","https://verify.janoshik.com/tests/214051-tesa_10mg_TE100722_D3G83TVZCGW1"],["Endotoxin","https://verify.janoshik.com/tests/214050-tesa_10mg_TE100722_VMSKDABX6KHN"]],
-"Tesamorelin 20 mg":[["Purity","https://verify.janoshik.com/tests/204100-tesa_20mg_3901_TE200626_L13WC3SGVL3B"],["Heavy Metals","https://verify.janoshik.com/tests/204102-tesa_20mg_3901_TE200626_M2EN99FA4UZ5"],["Endotoxin","https://verify.janoshik.com/tests/204101-tesa_20mg_3901_TE200626_TRIHHU5EZAEH"]],
-"GHK 100 mg":[["Purity","https://verify.janoshik.com/tests/205538-ghk_100mg_6788_HK1000630_ZY3IRI9QNBBT"],["Heavy Metals","https://verify.janoshik.com/tests/205540-ghk_100mg_6788_HK1000630_NRXU8BGDHMNE"],["Endotoxin","https://verify.janoshik.com/tests/205539-ghk_100mg_6788_HK1000630_R2I5QJKQZ5MR"]],
-"Tirzepatide 30 mg":[["Purity","https://verify.janoshik.com/tests/200059-Tir30_3989_ZE300611_QTBNT1FA5W61"],["Heavy Metals","https://verify.janoshik.com/tests/198427-Tir30_3989_ZE300611_SWAJVDNRVICG"],["Endotoxin","https://verify.janoshik.com/tests/200058-Tir30_3989_ZE300611_VSSM3RH91TTY"]],
-"Tirzepatide 60 mg":[["Purity","https://verify.janoshik.com/tests/216179-usa_tir_60mg_ZE600724_QCPQUN6UVZKK"],["Heavy Metals","https://verify.janoshik.com/tests/216178-usa_tir_60mg_ZE600724_GXEQU16WLE8L"],["Endotoxin","https://verify.janoshik.com/tests/216180-usa_tir_60mg_ZE600724_H6TZBJJZERM4"]],
-"BPC-157 / TB4 10/10":[["Purity","https://verify.janoshik.com/tests/204139-tbbp_1010_TB10100628_FFBCJ97LPSD3"],["Heavy Metals","https://verify.janoshik.com/tests/204141-tbbp_1010_TB10100628_CBVXAMY6KNVR"],["Endotoxin","https://verify.janoshik.com/tests/204140-tbbp_1010_TB10100628_DAFQ9SFTXLR8"]],
-"NA Semax Amidate 10 mg":[["Purity","https://verify.janoshik.com/tests/224218-us_na_semax_10mg_USNASX100808_5LRPGCU9ALLU"],["Heavy Metals","https://verify.janoshik.com/tests/224220-us_na_semax_10mg_USNASX100808_HV3AJK4EXFEU"],["Endotoxin","https://verify.janoshik.com/tests/224219-us_na_semax_10mg_USNASX100808_BZGBQQF9AMGQ"]],
-"NA Selank Amidate 10 mg":[["Purity","https://verify.janoshik.com/tests/224227-us_na_selank_10mg_4953_USNASK100808_29FWEIJ1VU6B"],["Heavy Metals","https://verify.janoshik.com/tests/224229-us_na_selank_10mg_4953_USNASK100808_VLZ98C4SF6W5"],["Endotoxin","https://verify.janoshik.com/tests/224228-us_na_selank_10mg_4953_USNASK100808_6TTIAEBXK6ZE"]],
-"MOTS-C 40 mg":[["Purity","https://verify.janoshik.com/tests/224223-us_motsc_40mg_9992_USMO400808_2DQ5RPJSNPTZ"],["Heavy Metals","https://verify.janoshik.com/tests/224225-us_motsc_40mg_9992_USMO400808_JK86QGZU4LVP"],["Endotoxin","https://verify.janoshik.com/tests/224224-us_motsc_40mg_9992_USMO400808_AFTL8X9F3NC1"]],
-"Tesamorelin / Ipamorelin 10/3 mg":[["Purity","https://verify.janoshik.com/tests/224192-Us_tesaipa_103_USTI1030806_ZHY72Z6S1466"],["Heavy Metals","https://verify.janoshik.com/tests/224194-Us_tesaipa_103_USTI1030806_FDQQJC1VICVX"],["Endotoxin","https://verify.janoshik.com/tests/224193-Us_tesaipa_103_USTI1030806_2IQCB9UGP9UT"]],
-"GLOW 70 mg":[["Purity","https://verify.janoshik.com/tests/224201-us_glow_USGLO700807_PSLDRCM3GQEK"],["Heavy Metals","https://verify.janoshik.com/tests/224203-us_glow_USGLO700807_8S72WDYLJ478"],["Endotoxin","https://verify.janoshik.com/tests/224202-us_glow_USGLO700807_QBB4VUSJ4PF6"]]
-};
-  document.querySelectorAll('#products .card').forEach(card => {
-    const title = card.querySelector('h3')?.textContent.trim();
-    const tests = coa[title];
-    if (!tests) return;
-    const box = document.createElement('div');
-    box.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
-    tests.forEach(([label,url]) => {
-      const a = document.createElement('a');
-      a.className = 'pill';
-      a.href = url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.textContent = label;
-      a.style.cssText = 'margin-top:0;text-decoration:none';
-      box.appendChild(a);
+
+  <script src="coa-library.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const coa = window.STONE_POINT_COAS || {};
+      document.querySelectorAll('#products .card').forEach(card => {
+        const title = card.querySelector('h3')?.textContent.trim();
+        const tests = coa[title];
+        if (!Array.isArray(tests) || tests.length === 0) return;
+        const box = document.createElement('div');
+        box.className = 'coa-links';
+        tests.forEach(({ label, file, lot }) => {
+          const link = document.createElement('a');
+          link.className = 'pill coa-link';
+          link.href = file;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = lot ? `${label} · ${lot}` : label;
+          box.appendChild(link);
+        });
+        card.appendChild(box);
+      });
     });
-    card.appendChild(box);
-  });
-});
-</script>
+  </script>
 
 </body>
 </html>
