@@ -41,8 +41,8 @@
     }
     .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:.02em}
-    .mark{width:38px;height:46px;display:grid;place-items:center;flex:0 0 auto}
-    .mark svg{width:100%;height:100%;display:block}
+    .mark{width:48px;height:54px;display:block;flex:0 0 auto;position:relative;overflow:hidden;border-radius:10px;background:#000}
+    .mark img{width:84px;height:84px;max-width:none;position:absolute;left:50%;top:-2px;transform:translateX(-50%);object-fit:cover;display:block}
     .brand span{font-size:1.06rem}
     .nav-links{display:flex;gap:20px;align-items:center}
     .nav-links a{font-size:.94rem;text-decoration:none;color:#d8d8d3}
@@ -109,12 +109,7 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="#top" class="brand" aria-label="Stone Point home">
-        <span class="mark" aria-hidden="true">
-          <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 4 86 31 72 45 82 62 64 69 59 92 50 116 41 92 36 69 18 62 28 45 14 31 50 4Z" stroke="#D8B762" stroke-width="6" stroke-linejoin="round"/>
-            <path d="m28 45 22 18 22-18M36 69l14-6 14 6M41 92l9-29 9 29" stroke="#8F7435" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-        </span>
+        <span class="mark" aria-hidden="true"><img src="stone-point-logo.svg" alt="" /></span>
         <span>STONE POINT</span>
       </a>
       <nav class="nav-links" id="navLinks">
