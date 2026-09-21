@@ -63,10 +63,17 @@
     .trust strong{display:block;margin-bottom:6px}
     .trust span{color:var(--muted);font-size:.94rem}
     section{padding:70px 0}
+    #products{position:relative;overflow:hidden}
+    #products:before{content:"";position:absolute;width:680px;height:680px;right:-230px;top:30px;background:url("stone-point-logo.svg") center/contain no-repeat;opacity:.035;filter:grayscale(1);pointer-events:none}
+    #products .wrap{position:relative;z-index:1}
     .section-kicker{color:var(--gold-2);font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
     h2{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.045em;line-height:1.05;margin:0 0 16px}
     .section-intro{color:var(--muted);max-width:760px;margin:0 0 30px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .catalog-group{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:26px 0 0;color:var(--gold-2);font-size:.78rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase}
+    .catalog-group:first-child{margin-top:0}
+    .catalog-group:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(201,163,74,.6),transparent)}
+    .catalog-icon{width:30px;height:30px;display:grid;place-items:center;border:1px solid rgba(201,163,74,.45);border-radius:50%;background:#14120c;color:var(--gold-2);font-size:.9rem;letter-spacing:0}
     .card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),#0c0c0c);border-radius:var(--radius);padding:24px;min-height:210px;position:relative;overflow:hidden}
     .card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(201,163,74,.12);border-radius:50%;right:-48px;top:-48px}
     .card h3{font-size:1.25rem;margin:0 0 8px}
@@ -165,37 +172,41 @@
         <h2>Research products</h2>
         <p class="section-intro">Browse the current Stone Point research catalog. Lot-specific testing records will appear on each product as redacted files are approved for publication.</p>
         <div class="grid">
-       <article class="card"><h3>5-Amino-1MQ 50 mg</h3><span class="pill">Research use only</span></article>
+       <div class="catalog-group"><span class="catalog-icon">◆</span><span>GLP-1 research</span></div>
+<article class="card"><h3>Retatrutide 30 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>Retatrutide 60 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>Tirzepatide 30 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>Tirzepatide 60 mg</h3><span class="pill">Research use only</span></article>
+<div class="catalog-group"><span class="catalog-icon">◈</span><span>Amylin research</span></div>
+<article class="card"><h3>Eloralintide 10 mg</h3><span class="pill">Research use only</span></article>
+<div class="catalog-group"><span class="catalog-icon">✦</span><span>Featured compounds</span></div>
+<article class="card"><h3>KLOW</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>GLOW 70 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>GHK 100 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>GHK / KPV 50/20</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>Melanotan 2 10 mg</h3><span class="pill">Research use only</span></article>
+<article class="card"><h3>PT-141 10 mg</h3><span class="pill">Research use only</span></article>
+<div class="catalog-group"><span class="catalog-icon">＋</span><span>Complete catalog</span></div>
+<article class="card"><h3>5-Amino-1MQ 50 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>BAC Water 10 mL</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Epitalon 50 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Melanotan 2 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>IllumiNeuro</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>PT-141 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>TB4 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>BPC-157 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>NAD+ 500</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>KLOW</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>NAD+ 1000</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Cartalax 40 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Cartalax / TB4 / BPC-157 10/5/5</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>GHK / KPV 50/20</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>CJC / IPA 10/10</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Thymosin Alpha-1 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>KPV 30 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Tesamorelin 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Tesamorelin 20 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>GHK 100 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Tirzepatide 30 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Tirzepatide 60 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Retatrutide 30 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Retatrutide 60 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>Eloralintide 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>BPC-157 / TB4 10/10</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>NA Semax Amidate 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>NA Selank Amidate 10 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>MOTS-C 40 mg</h3><span class="pill">Research use only</span></article>
 <article class="card"><h3>Tesamorelin / Ipamorelin 10/3 mg</h3><span class="pill">Research use only</span></article>
-<article class="card"><h3>GLOW 70 mg</h3><span class="pill">Research use only</span></article>
         </div>
       </div>
     </section>
