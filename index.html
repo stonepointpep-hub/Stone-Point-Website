@@ -90,6 +90,20 @@
     .contact-box{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:linear-gradient(160deg,#151515,#0b0b0b)}
     .contact-box code{display:block;margin-top:12px;padding:12px;border-radius:12px;background:#080808;border:1px solid #252525;color:#d7bd77;overflow:auto}
     .note{font-size:.88rem;color:#9e9e98}
+    .order-button{margin-top:14px;width:100%;position:relative;z-index:2;border:1px solid rgba(201,163,74,.55);background:#211a0b;color:var(--gold-2);border-radius:12px;padding:11px 13px;font-weight:800}
+    .order-button:hover{background:#2b220e}
+    .cart-button{border:0;border-radius:12px;padding:10px 13px;font-weight:850;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#0c0c0c}
+    .cart-count{display:inline-grid;place-items:center;min-width:22px;height:22px;margin-left:6px;padding:0 5px;border-radius:99px;background:#0c0c0c;color:#fff;font-size:.75rem}
+    .cart-layer{display:none;position:fixed;inset:0;z-index:100}.cart-layer.open{display:block}
+    .cart-shade{position:absolute;inset:0;background:rgba(0,0,0,.76);backdrop-filter:blur(5px)}
+    .cart-panel{position:absolute;right:0;top:0;width:min(460px,100%);height:100%;overflow:auto;background:#0d0d0d;border-left:1px solid var(--line);padding:22px}
+    .cart-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.cart-close{border:1px solid var(--line);background:#171717;color:#fff;border-radius:10px;padding:8px 11px}
+    .cart-items{display:grid;gap:10px;margin:20px 0}.cart-empty{border:1px dashed var(--line);border-radius:13px;padding:20px;color:var(--muted);text-align:center}
+    .cart-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:13px;background:#141414}
+    .quantity{display:flex;align-items:center;gap:9px}.quantity button{width:31px;height:31px;border:1px solid var(--line);border-radius:9px;background:#202020;color:#fff}
+    .order-form{display:grid;gap:11px}.order-form label{color:#c8c3b8;font-size:.84rem}.order-form input,.order-form textarea{display:block;width:100%;margin-top:5px;border:1px solid var(--line);border-radius:11px;background:#151515;color:#fff;padding:11px}.order-form textarea{min-height:82px;resize:vertical}
+    .research-check{display:flex;gap:9px;align-items:flex-start;color:var(--muted)!important;font-size:.8rem!important}.research-check input{width:auto;margin-top:4px}
+    .submit-order{border:0;border-radius:12px;padding:13px;font-weight:850;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#0c0c0c}.submit-order:disabled{opacity:.45;cursor:not-allowed}.order-note{font-size:.76rem;color:#858178;margin:0}
     footer{border-top:1px solid var(--line);padding:34px 0 46px;color:#8f8f89;font-size:.84rem}
     .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     .disclaimer{margin-top:18px;max-width:900px}
@@ -97,6 +111,7 @@
       .nav-links{display:none;position:absolute;left:14px;right:14px;top:70px;flex-direction:column;align-items:stretch;background:#0d0d0d;border:1px solid var(--line);border-radius:16px;padding:10px}
       .nav-links.open{display:flex}
       .nav-links a{padding:11px 10px}
+      .nav-links .cart-button{display:block;width:100%}
       .menu-btn{display:block}
       .hero{padding-top:70px}
       .trust-row,.grid,.coa,.contact{grid-template-columns:1fr}
@@ -117,6 +132,7 @@
         <a href="#testing">Testing</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
+        <button class="cart-button" id="cartOpen" type="button">Order <span class="cart-count" id="cartCount">0</span></button>
       </nav>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
     </div>
@@ -240,6 +256,8 @@
     </section>
   </main>
 
+  <div class="cart-layer" id="cartLayer" aria-hidden="true"><div class="cart-shade" id="cartShade"></div><aside class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle"><div class="cart-head"><h2 id="cartTitle">Order request</h2><button class="cart-close" id="cartClose" type="button">Close</button></div><div class="cart-items" id="cartItems"></div><form class="order-form" id="orderForm"><label>Name<input id="orderName" autocomplete="name" required></label><label>Email<input id="orderEmail" type="email" autocomplete="email" required></label><label>Notes<textarea id="orderNotes" placeholder="Lot request or other details"></textarea></label><label class="research-check"><input id="researchAck" type="checkbox" required><span>I confirm these products are requested solely for laboratory research and are not for human or veterinary use.</span></label><button class="submit-order" id="submitOrder" type="submit">Prepare email order request</button><p class="order-note">Your email app will open with the request filled in. Stone Point will confirm availability and next steps.</p></form></aside></div>
+
   <footer>
     <div class="wrap">
       <div class="footer-grid"><strong>STONE POINT</strong><span>© <span id="year"></span> Stone Point</span></div>
@@ -253,6 +271,43 @@
     const navLinks = document.getElementById('navLinks');
     menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = new Map();
+      const layer = document.getElementById('cartLayer');
+      const items = document.getElementById('cartItems');
+      const count = document.getElementById('cartCount');
+      const submit = document.getElementById('submitOrder');
+      const renderCart = () => {
+        const total = [...cart.values()].reduce((sum, quantity) => sum + quantity, 0);
+        count.textContent = total;
+        submit.disabled = total === 0;
+        items.innerHTML = total ? [...cart].map(([product, quantity]) => `<div class="cart-item"><strong>${product}</strong><div class="quantity"><button type="button" data-product="${product}" data-change="-1" aria-label="Remove one ${product}">−</button><strong>${quantity}</strong><button type="button" data-product="${product}" data-change="1" aria-label="Add one ${product}">+</button></div></div>`).join('') : '<div class="cart-empty">Your order request is empty.</div>';
+        items.querySelectorAll('[data-change]').forEach(button => button.addEventListener('click', () => { const product = button.dataset.product; const next = (cart.get(product) || 0) + Number(button.dataset.change); next > 0 ? cart.set(product, next) : cart.delete(product); renderCart(); }));
+      };
+      document.querySelectorAll('#products .card').forEach(card => {
+        const product = card.querySelector('h3')?.textContent.trim();
+        if (!product) return;
+        const button = document.createElement('button');
+        button.className = 'order-button'; button.type = 'button'; button.textContent = 'Add to order';
+        button.addEventListener('click', () => { cart.set(product, (cart.get(product) || 0) + 1); renderCart(); layer.classList.add('open'); layer.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; });
+        card.appendChild(button);
+      });
+      const openCart = () => { layer.classList.add('open'); layer.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+      const closeCart = () => { layer.classList.remove('open'); layer.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+      document.getElementById('cartOpen').addEventListener('click', openCart);
+      document.getElementById('cartClose').addEventListener('click', closeCart);
+      document.getElementById('cartShade').addEventListener('click', closeCart);
+      document.getElementById('orderForm').addEventListener('submit', event => {
+        event.preventDefault(); if (!cart.size) return;
+        const productLines = [...cart].map(([product, quantity]) => `- ${product} — Qty ${quantity}`).join('\n');
+        const body = `Stone Point Peptides Research Order Request\n\nName: ${document.getElementById('orderName').value}\nEmail: ${document.getElementById('orderEmail').value}\n\nProducts:\n${productLines}\n\nNotes:\n${document.getElementById('orderNotes').value || 'None'}\n\nI confirm this request is solely for laboratory research and not for human or veterinary use.`;
+        window.location.href = `mailto:Stonepointpep@gmail.com?subject=${encodeURIComponent('Research order request')}&body=${encodeURIComponent(body)}`;
+      });
+      renderCart();
+    });
   </script>
 
   <script src="coa-library.js"></script>
