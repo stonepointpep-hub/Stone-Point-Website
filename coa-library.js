@@ -130,7 +130,7 @@ window.STONE_POINT_COAS = {
     {
       "label": "Testing summary",
       "lot": "KLO801213",
-      "file": "testing-records.html#klow",
+      "file": "testing-records.html#klow-klo801213",
       "tests": [
         "Analytical report"
       ],
