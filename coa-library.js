@@ -126,6 +126,34 @@ window.STONE_POINT_COAS = {
         "Endotoxin"
       ],
       "availability": "Full reports available by request"
+    },
+    {
+      "label": "Testing summary",
+      "lot": "KLO80-1213",
+      "tests": [
+        "Component content"
+      ],
+      "tested": "2025-12-31",
+      "measurements": [
+        {
+          "name": "GHK-Cu",
+          "value": "59.77 mg"
+        },
+        {
+          "name": "BPC-157",
+          "value": "12.20 mg"
+        },
+        {
+          "name": "TB-500 (TB4)",
+          "value": "11.41 mg"
+        },
+        {
+          "name": "KPV",
+          "value": "11.39 mg"
+        }
+      ],
+      "availability": "Full report available by request",
+      "file": "testing-records.html#klow-klo80-1213"
     }
   ],
   "NAD+ 1000": [
@@ -358,6 +386,50 @@ window.STONE_POINT_COAS = {
         "Endotoxin"
       ],
       "availability": "Full reports available by request"
+    }
+  ],
+  "Retatrutide 30 mg": [
+    {
+      "label": "Testing summary",
+      "lot": "re300424",
+      "tests": [
+        "Purity / content"
+      ],
+      "tested": "2025-05-06",
+      "measurements": [
+        {
+          "name": "Retatrutide content",
+          "value": "33.02 mg"
+        },
+        {
+          "name": "Purity",
+          "value": "99.522%"
+        }
+      ],
+      "availability": "Full report available by request",
+      "file": "testing-records.html#retatrutide-30-mg"
+    }
+  ],
+  "Retatrutide 60 mg": [
+    {
+      "label": "Testing summary",
+      "lot": "RE60-0110",
+      "tests": [
+        "Purity / content"
+      ],
+      "tested": "2026-01-23",
+      "measurements": [
+        {
+          "name": "Retatrutide content",
+          "value": "66.92 mg"
+        },
+        {
+          "name": "Purity",
+          "value": "99.731%"
+        }
+      ],
+      "availability": "Full report available by request",
+      "file": "testing-records.html#retatrutide-60-mg"
     }
   ]
 };
