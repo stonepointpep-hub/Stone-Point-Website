@@ -126,6 +126,15 @@ window.STONE_POINT_COAS = {
         "Endotoxin"
       ],
       "availability": "Full reports available by request"
+    },
+    {
+      "label": "Testing summary",
+      "lot": "KLO801213",
+      "file": "testing-records.html#klow",
+      "tests": [
+        "Analytical report"
+      ],
+      "availability": "Full reports available by request"
     }
   ],
   "NAD+ 1000": [
@@ -261,6 +270,17 @@ window.STONE_POINT_COAS = {
       "label": "Testing summary",
       "lot": "RE300424",
       "file": "testing-records.html#retatrutide-30-mg",
+      "tests": [
+        "Analytical report"
+      ],
+      "availability": "Full reports available by request"
+    }
+  ],
+  "Retatrutide 60 mg": [
+    {
+      "label": "Testing summary",
+      "lot": "RE600110",
+      "file": "testing-records.html#retatrutide-60-mg",
       "tests": [
         "Analytical report"
       ],
