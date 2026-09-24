@@ -256,6 +256,17 @@ window.STONE_POINT_COAS = {
       "availability": "Full reports available by request"
     }
   ],
+  "Retatrutide 30 mg": [
+    {
+      "label": "Testing summary",
+      "lot": "RE300424",
+      "file": "testing-records.html#retatrutide-30-mg",
+      "tests": [
+        "Analytical report"
+      ],
+      "availability": "Full reports available by request"
+    }
+  ],
   "Tirzepatide 30 mg": [
     {
       "label": "Testing summary",
