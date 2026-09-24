@@ -45,6 +45,33 @@ PRODUCT_ALIASES = {
     "GLOW 70 mg": "glow 70mg",
 }
 
+# Values transcribed from the supplied Janoshik report screenshots.
+VERIFIED_RESULTS = {
+    "Retatrutide 30 mg": [{
+        "label": "Testing summary", "lot": "re300424",
+        "tests": ["Purity / content"], "tested": "2025-05-06",
+        "measurements": [{"name": "Retatrutide content", "value": "33.02 mg"}, {"name": "Purity", "value": "99.522%"}],
+        "availability": "Full report available by request",
+    }],
+    "Retatrutide 60 mg": [{
+        "label": "Testing summary", "lot": "RE60-0110",
+        "tests": ["Purity / content"], "tested": "2026-01-23",
+        "measurements": [{"name": "Retatrutide content", "value": "66.92 mg"}, {"name": "Purity", "value": "99.731%"}],
+        "availability": "Full report available by request",
+    }],
+    "KLOW": [{
+        "label": "Testing summary", "lot": "KLO80-1213",
+        "tests": ["Component content"], "tested": "2025-12-31",
+        "measurements": [{"name": "GHK-Cu", "value": "59.77 mg"}, {"name": "BPC-157", "value": "12.20 mg"}, {"name": "TB-500 (TB4)", "value": "11.41 mg"}, {"name": "KPV", "value": "11.39 mg"}],
+        "availability": "Full report available by request",
+    }],
+}
+
+
+def lot_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", value.lower())
+
+
 TEST_NAMES = {
     "purity": "Purity / content",
     "h-metals": "Heavy metals",
@@ -124,6 +151,17 @@ def build_records(cards: list[dict[str, object]]) -> dict[str, list[dict[str, ob
         }]
     if missing:
         raise RuntimeError("Missing catalog matches: " + ", ".join(missing))
+    for product, manual_entries in VERIFIED_RESULTS.items():
+        product_records = records.setdefault(product, [])
+        for manual in manual_entries:
+            matching = next((i for i, item in enumerate(product_records) if lot_key(str(item["lot"])) == lot_key(manual["lot"])), None)
+            if matching is None:
+                product_records.append(dict(manual))
+            else:
+                product_records[matching] = dict(manual)
+        for index, item in enumerate(product_records):
+            anchor = slugify(product) if index == 0 else f"{slugify(product)}-{slugify(str(item['lot']))}"
+            item["file"] = f"testing-records.html#{anchor}"
     return records
 
 
