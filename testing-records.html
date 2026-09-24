@@ -29,29 +29,30 @@
     const records = document.getElementById('records');
     const slugify = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     Object.entries(window.STONE_POINT_COAS || {}).forEach(([product, entries]) => {
-      const entry = entries[0];
-      if (!entry) return;
-      const article = document.createElement('article');
-      article.className = 'record';
-      article.id = slugify(product);
-      const title = document.createElement('h2');
-      title.textContent = product;
-      const lot = document.createElement('div');
-      lot.className = 'lot';
-      lot.textContent = `Batch: ${entry.lot}`;
-      const tests = document.createElement('div');
-      tests.className = 'tests';
-      (entry.tests || []).forEach(label => {
-        const tag = document.createElement('span');
-        tag.className = 'test';
-        tag.textContent = label;
-        tests.appendChild(tag);
+      (entries || []).forEach((entry, index) => {
+        if (!entry) return;
+        const article = document.createElement('article');
+        article.className = 'record';
+        article.id = index === 0 ? slugify(product) : `${slugify(product)}-${slugify(entry.lot)}`;
+        const title = document.createElement('h2');
+        title.textContent = product;
+        const lot = document.createElement('div');
+        lot.className = 'lot';
+        lot.textContent = `Batch: ${entry.lot}`;
+        const tests = document.createElement('div');
+        tests.className = 'tests';
+        (entry.tests || []).forEach(label => {
+          const tag = document.createElement('span');
+          tag.className = 'test';
+          tag.textContent = label;
+          tests.appendChild(tag);
+        });
+        const availability = document.createElement('p');
+        availability.className = 'availability';
+        availability.textContent = entry.availability || 'Full reports available by request';
+        article.append(title, lot, tests, availability);
+        records.appendChild(article);
       });
-      const availability = document.createElement('p');
-      availability.className = 'availability';
-      availability.textContent = entry.availability || 'Full reports available by request';
-      article.append(title, lot, tests, availability);
-      records.appendChild(article);
     });
   </script>
 </body>
