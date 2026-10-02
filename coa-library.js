@@ -118,7 +118,7 @@ window.STONE_POINT_COAS = {
   "KLOW": [
     {
       "label": "Testing summary",
-      "lot": "KLO800703",
+      "lot": "KLOW-0815",
       "file": "testing-records.html#klow",
       "tests": [
         "Purity / content",
