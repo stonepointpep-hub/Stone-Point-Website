@@ -235,12 +235,10 @@ window.STONE_POINT_COAS = {
   "KPV 30 mg": [
     {
       "label": "Testing summary",
-      "lot": "KP30-0716",
+      "lot": "KP30-0729",
       "file": "testing-records.html#kpv-30-mg",
       "tests": [
-        "Purity / content",
-        "Heavy metals",
-        "Endotoxin"
+        "Purity / content"
       ],
       "availability": "Full reports available by request"
     }
